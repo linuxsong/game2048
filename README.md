@@ -1,2 +1,3 @@
 # game2048
-Flutter 实现的2048游戏
+
+[Flutter](https://flutter.io/)是Google新推出的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面，为了解和学习Flutter的框架，用 Fluter 实现了一款2048的游戏。
