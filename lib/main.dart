@@ -3,7 +3,7 @@ import 'logic.dart';
 
 void main() => runApp(MyApp());
 
-final Map<int, Color> BoxColors = <int, Color>{
+final BoxColors = <int, Color>{
   2: Colors.orange[50],
   4: Colors.orange[100],
   8: Colors.orange[200],
@@ -19,7 +19,7 @@ final Map<int, Color> BoxColors = <int, Color>{
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appTitle = 'Opacity Demo';
+    final appTitle = '2048';
     return MaterialApp(
         title: appTitle,
         home: new Scaffold(
@@ -33,7 +33,7 @@ class BoardGridWidget extends StatelessWidget {
   BoardGridWidget(this._state);
   @override
   Widget build(BuildContext context) {
-    Size boardSize = _state.boardSize();
+    final boardSize = _state.boardSize();
     double width =
         (boardSize.width - (_state.column + 1) * _state.cellPadding) /
             _state.column;
@@ -293,6 +293,7 @@ class AnimatedCellWidget extends AnimatedWidget {
             : BoxColors[BoxColors.keys.last],
         text: Text(
           cell.number.toString(),
+          maxLines: 1,
           style: TextStyle(
             fontSize: 30.0 * animationValue,
             fontWeight: FontWeight.bold,
@@ -367,12 +368,17 @@ class CellBox extends StatelessWidget {
       child: Container(
           width: size,
           height: size,
+          padding:  EdgeInsets.symmetric(horizontal: 5 ),
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.all(Radius.circular(8.0)),
           ),
           child: Center(
-            child: text,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.center,
+              child:text
+            )
           )),
     );
   }

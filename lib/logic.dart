@@ -203,6 +203,7 @@ class Game {
     }
   }
 
+  // 随机单元数字，出现4的概率为1/15
   int randomCellNum() {
     final Random r = Random();
     return r.nextInt(15) == 0 ? 4 : 2;
